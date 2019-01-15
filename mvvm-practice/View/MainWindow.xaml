@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:mvvm_practice"
-        xmlns:test="clr-namespace:mvvm_practice.ViewModel"
+        xmlns:local="clr-namespace:mvvm_practice.ViewModel"
         mc:Ignorable="d"
-        Title="MVVM Practice" Height="450" Width="800">
-    
+        Title="MVVM Practice" Height="478.8" Width="251.6">
+
     <Window.DataContext>
-        <test:MainWindowViewModel></test:MainWindowViewModel>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <Style x:Key="TextBlockNewAccountStyle">
             <Setter Property="Control.Margin" Value="10,0,0,0"/>
@@ -27,29 +26,32 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto" MinHeight="180.8"/>
         </Grid.RowDefinitions>
-        <ListBox HorizontalAlignment="Left" Height="214" VerticalAlignment="Top" Width="774" Margin="5,5,0,0"
-                 ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}">
+
+        <ListBox HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="223" Margin="5,5,0,0"
+                 ItemsSource="{Binding Path=Accounts}" SelectedItem="{Binding SelectedAccount}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Path=Login}" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="15" Text="{Binding Path=Id}" Margin="0,0,5,0"/>
+                            <TextBlock FontSize="20" Text="{Binding Path=Login}" />
+                        </StackPanel>
                         <TextBlock Text="{Binding Path=Password}" />
-                        <TextBlock Text="{Binding Path=EMail}" />
-                        <TextBlock Text="{Binding Path=DateBirthday}" />
+                        <TextBlock Text="{Binding Path=Email}" />
+                        <TextBlock Text="{Binding Path=BirthdayDate, StringFormat=d}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid HorizontalAlignment="Left" Height="168" Grid.Row="1" VerticalAlignment="Top" Width="794" Margin="0,0,0,0"
+        <Grid HorizontalAlignment="Left" Height="180" Grid.Row="1" VerticalAlignment="Top" Width="228" Margin="0,1,0,-0.2"
               DataContext="{Binding SelectedAccount}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="109*"/>
-                <ColumnDefinition Width="120*"/>
-                <ColumnDefinition Width="565*"/>
+                <ColumnDefinition Width="109"/>
+                <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -63,11 +65,11 @@
             <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Пароль" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,8.4,0,9.2" Width="42"/>
             <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Почта" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,8.8,0,8.8" Width="34"/>
             <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Дата рождения" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,9.2,0,8.4" Width="85"/>
-            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" TextWrapping="Wrap" Width="120" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5,0,5.6" Grid.ColumnSpan="2"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="1" TextWrapping="Wrap" Width="120" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.4,0,5.2" Grid.ColumnSpan="2"/>
-            <TextBox Text="{Binding EMail, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="24" Grid.Row="2" TextWrapping="Wrap" Width="120" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,4.8,0,4.8" Grid.ColumnSpan="2"/>
-            <TextBox Text="{Binding DateBirthday, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="3" TextWrapping="Wrap" Width="120" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.2,0,5.4" Grid.ColumnSpan="2"/>
-            <Button Content="Новый" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,0,0" HorizontalAlignment="Left" Grid.Row="4" Width="219"/>
+            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5,0,5.6"/>
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="1" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.4,0,5.2"/>
+            <TextBox Text="{Binding EMail, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="2" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,4.8,0,4.8"/>
+            <TextBox Text="{Binding DateBirthday, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="3" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.2,0,5.4"/>
+            <Button Content="Новый" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,35,0,10" HorizontalAlignment="Left" Grid.Row="3" Width="218" Grid.RowSpan="2"/>
         </Grid>
 
     </Grid>

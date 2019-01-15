@@ -8,44 +8,115 @@ namespace mvvm_practice.Model
 {
     class Account
     {
-        private static int accountsCount = 0;
-
         private int id;
         private string login;
         private string password;
         private string email;
         private DateTime birthdayDate;
 
-        public int Id { get => id; set => id = value; }
-        public string Login { get => login; set => login = value; }
-        public string Password { get => password; set => password = value; }
-        public string Email { get => email; set => email = value; }
-        public DateTime BirthdayDate { get => birthdayDate; set => birthdayDate = value; }
-
-        static Account()
+        public int Id
         {
-            accountsCount++;
+            get
+            {
+                if (id == 0)
+                {
+                    return -1;
+                }
+
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+
+        public string Login
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(login))
+                {
+                    return "null";
+                }
+
+                return login;
+            }
+            set
+            {
+                login = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(password))
+                {
+                    return "null";
+                }
+                    
+                return password;
+            }
+            set
+            {
+                password = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(email))
+                {
+                    return "null";
+                }
+                return email;
+            }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string BirthdayDate
+        {
+            get
+            {
+                if (birthdayDate < new DateTime(1900, 1, 1))
+                {
+                    return "null";
+                }
+
+                return birthdayDate.ToLongDateString();
+            }
+            set
+            {
+                birthdayDate = DateTime.Parse(value);
+            }
         }
 
         public Account()
         {
         }
 
-        public Account(string login, string password)
+        public Account(int id, string login, string password)
         {
-            this.id = accountsCount;
+            this.id = id;
             this.login = login;
             this.password = password;
         }
 
-        public Account(string login, string password, string email)
-            : this(login, password)
+        public Account(int id, string login, string password, string email) 
+            : this(id, login, password)
         {
             this.email = email;
         }
 
-        public Account(string login, string password, string email, DateTime birthdayDate)
-            : this(login, password, email)
+        public Account(int id, string login, string password, string email, DateTime birthdayDate) 
+            : this(id, login, password, email)
         {
             this.birthdayDate = birthdayDate;
         }
