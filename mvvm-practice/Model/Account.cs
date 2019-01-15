@@ -37,7 +37,7 @@ namespace mvvm_practice.Model
             {
                 if (string.IsNullOrEmpty(login))
                 {
-                    return "null";
+                    return "";
                 }
 
                 return login;
@@ -54,7 +54,7 @@ namespace mvvm_practice.Model
             {
                 if (string.IsNullOrEmpty(password))
                 {
-                    return "null";
+                    return "";
                 }
                     
                 return password;
@@ -71,7 +71,7 @@ namespace mvvm_practice.Model
             {
                 if (string.IsNullOrEmpty(email))
                 {
-                    return "null";
+                    return "";
                 }
                 return email;
             }
@@ -87,7 +87,7 @@ namespace mvvm_practice.Model
             {
                 if (birthdayDate < new DateTime(1900, 1, 1))
                 {
-                    return "null";
+                    return "";
                 }
 
                 return birthdayDate.ToLongDateString();

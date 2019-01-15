@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <ListBox HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="223" Margin="5,5,0,0"
-                 ItemsSource="{Binding Path=Accounts}" SelectedItem="{Binding SelectedAccount}">
+                 ItemsSource="{Binding Path=Accounts}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -47,8 +47,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid HorizontalAlignment="Left" Height="180" Grid.Row="1" VerticalAlignment="Top" Width="228" Margin="0,1,0,-0.2"
-              DataContext="{Binding SelectedAccount}">
+        <Grid HorizontalAlignment="Left" Height="180" Grid.Row="1" VerticalAlignment="Top" Width="228" Margin="0,1,0,-0.2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="109"/>
                 <ColumnDefinition Width="120"/>
@@ -65,11 +64,11 @@
             <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Пароль" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,8.4,0,9.2" Width="42"/>
             <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Почта" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,8.8,0,8.8" Width="34"/>
             <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Дата рождения" Style="{StaticResource ResourceKey=TextBlockNewAccountStyle}" Height="16" Margin="10,9.2,0,8.4" Width="85"/>
-            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5,0,5.6"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="1" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.4,0,5.2"/>
-            <TextBox Text="{Binding EMail, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="2" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,4.8,0,4.8"/>
-            <TextBox Text="{Binding DateBirthday, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="3" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.2,0,5.4"/>
-            <Button Content="Новый" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,35,0,10" HorizontalAlignment="Left" Grid.Row="3" Width="218" Grid.RowSpan="2"/>
+            <TextBox Text="{Binding CurrentAccount.Login, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5,0,5.6"/>
+            <TextBox Text="{Binding CurrentAccount.Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="1" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.4,0,5.2"/>
+            <TextBox Text="{Binding CurrentAccount.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="2" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,4.8,0,4.8"/>
+            <TextBox Text="{Binding CurrentAccount.BirthdayDate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="23" Grid.Row="3" TextWrapping="Wrap" Width="119" Style="{StaticResource ResourceKey=TextBoxNewAccountStyle}" Margin="0.2,5.2,0,5.4"/>
+            <Button Command="{Binding CreateAccount}" Content="Новый" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,35,0,10" HorizontalAlignment="Left" Grid.Row="3" Width="218" Grid.RowSpan="2"/>
         </Grid>
 
     </Grid>
