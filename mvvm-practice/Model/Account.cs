@@ -8,6 +8,8 @@ namespace mvvm_practice.Model
 {
     class Account
     {
+        private static int accountsCount = 0;
+
         private int id;
         private string login;
         private string password;
@@ -20,25 +22,30 @@ namespace mvvm_practice.Model
         public string Email { get => email; set => email = value; }
         public DateTime BirthdayDate { get => birthdayDate; set => birthdayDate = value; }
 
+        static Account()
+        {
+            accountsCount++;
+        }
+
         public Account()
         {
         }
 
-        public Account(int id, string login, string password)
+        public Account(string login, string password)
         {
-            this.id = id;
+            this.id = accountsCount;
             this.login = login;
             this.password = password;
         }
 
-        public Account(int id, string login, string password, string email)
-            : this(id, login, password)
+        public Account(string login, string password, string email)
+            : this(login, password)
         {
             this.email = email;
         }
 
-        public Account(int id, string login, string password, string email, DateTime birthdayDate)
-            : this(id, login, password, email)
+        public Account(string login, string password, string email, DateTime birthdayDate)
+            : this(login, password, email)
         {
             this.birthdayDate = birthdayDate;
         }
